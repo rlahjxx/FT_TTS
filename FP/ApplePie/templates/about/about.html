@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- utf-8 인코딩 -->
+    <meta charset="utf-8">
+    <!-- 페이지 이름 -->
+    <title>ABOUT</title>
+    <!-- css 연결 -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='./_css/test.css') }}">
+  </head>
+
+  <body>
+    <!-- 전체 div -->
+    <div class="wrap">
+      <!-- 상단 부분 영역 -->
+      <div class="intro_bg">
+        <div class="navbar">
+          <!-- 좌측 상단 로고 -->
+          <div class="navbar_logo">
+            <a href="{{ url_for('main.index') }}">
+              <img src="{{ url_for('static', filename='./_images/logo2.png') }}">
+            </a>
+          </div>
+          <!-- 우측 상단 메뉴 -->
+          <ul class="navbar_menu">
+            <li><a href="{{ url_for('main.index') }}">Home</a></li>
+            <li><a href="{{ url_for('about.index') }}">About</a></li>
+            {% if g.user %}
+            <li><a href="{{ url_for('model.service') }}">Services</a></li>
+            <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
+            
+            {% else %}
+            <li><a href="{{ url_for('auth.login') }}">Services</a></li>
+            <li><a href="{{ url_for('auth.login') }}">Login</a></li>
+            {% endif %}
+          </ul>
+        </div>
+        <div class="title">
+          <div class="title_contents">
+            <h1>ABOUT</h1>
+            <br>
+            <h2>저희는 시각 장애인을 위해 이미지로부터 텍스트를 추출받아 </h2><br>
+            <h2>음성을 생성해주는 서비스 구현을 목표로 합니다.</h2>
+          </div>
+        </div>
+        
+      </div>
+      <!-- 상단 부분 영역 end-->
+      
+      <ul class="amount">
+        <li>
+            <div>
+              <div class="contents1_bold">Project Manager</div>
+              <div class="contents2">김현정</div>
+              <div class="hidden_contents">
+                <ul>
+                  <li>프로젝트 주제 선정</li>
+                  <li>UI/UX 기획</li>
+                  <li>main, login, signup 페이지 구현</li>
+                  <li class="common">공통</li>
+                  <li>glow-tts 논문 리뷰</li>
+                  <li>hifi-gan 논문 리뷰</li>
+                </ul>
+              </div>
+            </div>
+            
+        </li>
+        <li>
+            <div>
+                <div class="contents1_bold">Project Leader</div>
+                <div class="contents2">김현조</div>
+                <div class="hidden_contents">
+                  <ul>
+                    <li>945개의 음성 데이터 생성</li>
+                    <li>glow-tts, hifi-gan 모델 학습</li>
+                    <li>가상환경 구축</li>
+                    <li class="common">공통</li>
+                    <li>glow-tts 논문 리뷰</li>
+                    <li>hifi-gan 논문 리뷰</li>
+                  </ul>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div>
+                <div class="contents1_bold">Aplication Architect</div>
+                <div class="contents2">김웅재</div>
+                <div class="hidden_contents">
+                  <ul>
+                    <li>tesseract 모델 구축 Image To Text </li>
+                    <li>service 페이지 구현</li>
+                    <li>파이프라인 구축</li>
+                    <li class="common">공통</li>
+                    <li>glow-tts 논문 리뷰</li>
+                    <li>hifi-gan 논문 리뷰</li>
+                  </ul>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div>
+                <div class="contents1_bold">Technical Architect</div>
+                <div class="contents2">김민혁</div>
+                <div class="hidden_contents">
+                  <ul>
+                    <li>flask 서버</li>
+                    <li>flask DB</li>
+                    <li>About 페이지 구현</li>
+                    <li class="common">공통</li>
+                    <li>glow-tts 논문 리뷰</li>
+                    <li>hifi-gan 논문 리뷰</li>
+                  </ul>
+                </div>
+            </div>
+        </li>
+      </ul>
+      <div class="main_text0">
+        <ul class="icons">
+          <li class="a1">
+              <div class="icons_img">
+                  <img src="{{ url_for('static', filename='./_images/img_ocr2.png') }}">
+              </div>
+              <div class="contents1_bold">ApplePie OCR 광학 문자 판독</div>
+              <div class="contents3">사진 속에서 텍스트 정보를 찾고 의미를 판별 하는 기술입니다.</div>
+          </li>
+          <li class="a2">
+              <div class="icons_img">
+                  <img src="{{ url_for('static', filename='./_images/TTS.png') }}">
+              </div>
+              <div class="contents1_bold">ApplePie Voice 음성 합성</div>
+              <div class="contents3">자연스러운 고품질의 목소리를 구현하고, 텍스트 정보를 읽어주는 기술입니다.</div>
+          </li>
+          <li>
+            <div class="icons_img">
+              <img src="{{ url_for('static', filename='./_images/html.png') }}">
+              <img src="{{ url_for('static', filename='./_images/css3.png') }}">
+              <img src="{{ url_for('static', filename='./_images/js.png') }}">
+              <img src="{{ url_for('static', filename='./_images/flask.png') }}">
+              <img src="{{ url_for('static', filename='./_images/python.jpeg') }}">
+              <img src="{{ url_for('static', filename='./_images/anaconda.png') }}">
+              <img src="{{ url_for('static', filename='./_images/vscode.jpeg') }}">
+              <img src="{{ url_for('static', filename='./_images/sqlA.png') }}">
+
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <footer>
+      <div class="footer_logo">
+          <img src="{{ url_for('static', filename='./_images/logo.png')}}">
+      </div>
+      <div>
+          PM. 김현정 <br>
+          Members. 김현조, 김웅재, 김민혁 <br>
+          COPYRIGHT 2023. ApplePie. ALL RIGHT RESERVED.
+      </div>
+    </footer>
+    <script src="{{ url_for('static', filename='./_js/about.js')}}"></script>
+  </body>
+</html>

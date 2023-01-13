@@ -20,7 +20,7 @@ def signup():
         # 데이터베이스 id 중복 확인 진행
         user = User.query.filter_by(username=form.username.data).first()
 
-        # user가 존재하지 않는 경우
+        # user가 존재 하지 않는다면
         if not user:
             user = User(nickname=form.nickname.data,
                         username=form.username.data,
@@ -33,38 +33,48 @@ def signup():
             # main_views.py index() 함수 실행
             return redirect(url_for('main.index'))
         
-        # id가 중복 된다면
+        # user가 중복 된다면
         else:
             flash('이미 존재하는 사용자입니다.')
     
     # 처음 sign_up 버튼 클릭시
     return render_template('auth/sign_up.html', form=form)
 
+# loing 함수
 @bp.route('/login/', methods=('GET', 'POST'))
 def login():
+
+    # forms.py UserLoginForm() 함수 사용
     form = UserLoginForm()
+
     if request.method == 'POST' and form.validate_on_submit():
+        
+        # error 변수 초기화
         error = None
-        # user가 데이터베이스에 존재하는지 여부 확인
+
+        # user가 데이터베이스 존재하는지 여부
         user = User.query.filter_by(username=form.username.data).first()
+        
+        # user 가 존재 하지 않는다면
         if not user:
             error = "존재하지 않는 사용자입니다."
-        # user가 존재하면 비밀번호 확인
-        # 비밀번호가 일치하지 않을 경우
+        
+        # user 가 존재하면 비밀번호 확인
+        # 비밀번호가 일치 되지 않을때
         elif not check_password_hash(user.password, form.password.data):
             error = "비밀번호가 올바르지 않습니다."
-        
-        # error가 None이라면
+
+        # error 가 None 이라면
         if error is None:
             session.clear()
             session['user_id'] = user.id
             # main_views.py index() 함수 실행
             return redirect(url_for('main.index'))
-        flash(error)
 
+        flash(error)
+    
     # login 페이지 호출
     return render_template('auth/login.html', form=form)
-
 
 @bp.before_app_request
 def load_logged_in_user():

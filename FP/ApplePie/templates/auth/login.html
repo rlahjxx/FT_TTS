@@ -6,8 +6,8 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='./_css/login_style.css') }}">
     </head>
     <body>
-        <!-- 네비게이션 바 -->
-        <nav class="navbar">
+        <!-- 네비게이션 -->
+        <!-- <nav class="navbar">
             <div class="navbar_logo">
                 <i><img src="{{ url_for('static', filename='./_images/logo2.png') }}"></i>
             </div>
@@ -17,23 +17,47 @@
                 <li><a href="{{ url_for('auth.login') }}">Services</a></li>
                 <li><a href="{{ url_for('auth.login') }}">Login</a></li>
             </ul>
+        </nav> -->
+
+<!-- khj -->
+        <nav class="navbar">
+
+            <div class="navbar__logo">
+                <a  href="{{ url_for('main.index') }}"> 
+                    <i><img src="{{ url_for('static', filename='./_images/logo2.png') }}"></i>
+                </a>
+            
+            </div>
+
+            <ul class="navbar__menu">
+                <li><a href="{{ url_for('main.index') }}">Home</a></li>
+                <li><a href="{{ url_for('about.index') }}">About</a></li>
+                <li><a href="{{ url_for('auth.login') }}">Services</a></li>
+                <li><a href="{{ url_for('auth.signup') }}">Sign Up</a></li>
+            </ul>
+
+            
         </nav>
+<!--  -->
         
         <div class="login-form">
             <h1 id="aa">Login</h1>
+
             <form method="post">
                 {{ form.csrf_token }}
                 {% include "form_errors.html" %}
                 <input type="text" name="username" class="text-field" placeholder="아이디">
                 <input type="password" name="password" class="text-field" placeholder="비밀번호">
-
+                
                 <input type="submit" class="submit-btn" value="로그인">
             </form>
+
             <div class="links">
                 <a href="{{ url_for('auth.signup') }}">회원이 아니신가요? <strong>회원가입하기</strong></a>
             </div>
         </div>
 
         <div class="bg"></div>
+
     </body>
 </html>
